@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#Contains code from Dylan Charpentier
+#Contains code from http://easyos.net/articles/bsd/freebsd/output_control_in_freebsd_console
+
 # Reset
 NC='\033[0m'       # Text Reset
 
