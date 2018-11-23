@@ -1,7 +1,8 @@
 #!/bin/sh
 
-#Contains code from Dylan Charpentier
-#Contains code from http://easyos.net/articles/bsd/freebsd/output_control_in_freebsd_console
+# Written by: Rich Greene
+# Contains code from: Dylan Charpentier
+# Contains code from: http://easyos.net/articles/bsd/freebsd/output_control_in_freebsd_console
 
 # Reset
 NC='\033[0m'       # Text Reset
@@ -37,83 +38,65 @@ read -r -p "Press ENTER to continue, or Control-C to abort..." key
 
 clear;
 
-cat << EOF
-********************************************************************************
-********************************************************************************
-******                                                                    ******
-******   About to update FreeBSD                                          ******
-******                                                                    ******
-********************************************************************************
-********************************************************************************
+echo -e "${COOL}********************************************************************************"
+echo -e "********************************************************************************"
+echo -e "******                                                                    ******"
+echo -e "******   About to update FreeBSD                                          ******"
+echo -e "******                                                                    ******"
+echo -e "********************************************************************************"
+echo -e "********************************************************************************${NC}"
+echo ""
+echo ""
 
-
-EOF
-# function, that displays progress bar
+# Start Countdown
 progress_bar() {
   progress=$(( $1 * 30 / 5 ))
   bar=`printf "\33[41m% ${progress}s\33[m" ""`
   printf "\33[37D[%- 38s] %- 4s" "${bar}" "$1"
 }
-
-# percent counter
-i=0
-
-# inscription with shifting the cursor to the right in full length of the progress bar
+i=5
 printf "Proceeding in 5 seconds: \33[37C"
-
-# cycles percent
-while [ $i -le 5 ];
+while [ $i -ge 0 ];
 do
   progress_bar $i
-  i=$(( $i + 1 ))
+  i=$(( $i - 1 ))
   sleep 1
 done
-
-# because the "progress_bar" doesn't re-position cursor to a new line, after progress output we have to do this on our own.
 echo
+# End Countdown
 
-
-# fetch and install updates
+# fetch and install FreeBSD updates
 env PAGER=cat freebsd-update fetch;
 freebsd-update install;
 
 clear;
 
-cat << EOF
-********************************************************************************
-********************************************************************************
-******                                                                    ******
-******   About to set up the package manager and install packages.        ******
-******                                                                    ******
-********************************************************************************
-********************************************************************************
+echo -e "${COOL}********************************************************************************"
+echo -e "********************************************************************************"
+echo -e "******                                                                    ******"
+echo -e "******   About to set up the package manager and install packages.        ******"
+echo -e "******                                                                    ******"
+echo -e "********************************************************************************"
+echo -e "********************************************************************************${NC}"
+echo ""
+echo ""
 
-
-EOF
-
-# function, that displays progress bar
+# Start Countdown
 progress_bar() {
   progress=$(( $1 * 30 / 5 ))
   bar=`printf "\33[41m% ${progress}s\33[m" ""`
   printf "\33[37D[%- 38s] %- 4s" "${bar}" "$1"
 }
-
-# percent counter
-i=0
-
-# inscription with shifting the cursor to the right in full length of the progress bar
+i=5
 printf "Proceeding in 5 seconds: \33[37C"
-
-# cycles percent
-while [ $i -le 5 ];
+while [ $i -ge 0 ];
 do
   progress_bar $i
-  i=$(( $i + 1 ))
+  i=$(( $i - 1 ))
   sleep 1
 done
-
-# because the "progress_bar" doesn't re-position cursor to a new line, after progress output we have to do this on our own.
 echo
+# End Countdown
 
 # install package manager and install packages
 env ASSUME_ALWAYS_YES=yes pkg bootstrap;
@@ -121,40 +104,32 @@ env ASSUME_ALWAYS_YES=yes pkg install wget nano sudo htop kde5 hal dbus xorg xte
 
 clear;
 
-cat << EOF
-********************************************************************************
-********************************************************************************
-******                                                                    ******
-******   About to make changes to rc.conf                                 ******
-******                                                                    ******
-********************************************************************************
-********************************************************************************
+echo -e "${COOL}********************************************************************************"
+echo -e "********************************************************************************"
+echo -e "******                                                                    ******"
+echo -e "******   About to make changes to rc.conf                                 ******"
+echo -e "******                                                                    ******"
+echo -e "********************************************************************************"
+echo -e "********************************************************************************${NC}"
+echo ""
+echo ""
 
-
-EOF
-# function, that displays progress bar
+# Start Countdown
 progress_bar() {
   progress=$(( $1 * 30 / 5 ))
   bar=`printf "\33[41m% ${progress}s\33[m" ""`
   printf "\33[37D[%- 38s] %- 4s" "${bar}" "$1"
 }
-
-# percent counter
-i=0
-
-# inscription with shifting the cursor to the right in full length of the progress bar
+i=5
 printf "Proceeding in 5 seconds: \33[37C"
-
-# cycles percent
-while [ $i -le 5 ];
+while [ $i -ge 0 ];
 do
   progress_bar $i
-  i=$(( $i + 1 ))
+  i=$(( $i - 1 ))
   sleep 1
 done
-
-# because the "progress_bar" doesn't re-position cursor to a new line, after progress output we have to do this on our own.
 echo
+# End Countdown
 
 # update rc.conf with required variables
 sysrc hald_enable="YES";
@@ -168,31 +143,29 @@ sysrc vmware_guestd_enable="YES";
 
 clear;
 
-cat << EOF
-********************************************************************************
-********************************************************************************
-******                                                                    ******
-******   Please type in the username of your regular user to copy zsh     ******
-******   config and set zsh as the default shell                          ******
-******                                                                    ******
-********************************************************************************
-********************************************************************************
-
-
-EOF
+echo -e "${COOL}********************************************************************************"
+echo -e "********************************************************************************"
+echo -e "******                                                                    ******"
+echo -e "******   Please type in the username of your regular user to copy zsh     ******"
+echo -e "******   config and set zsh as the default shell                          ******"
+echo -e "******                                                                    ******"
+echo -e "********************************************************************************"
+echo -e "********************************************************************************${NC}"
+echo ""
+echo ""
 
 # prompt for username of regular user
 read -p 'Username: ' USERNAME
 
-# changer provided user's shell and set up empty zshrc file
+# changer provided user's shell and set up empty ,zshrc file
 chsh -s /usr/local/bin/zsh $USERNAME;
 cd /var/empty;
 cd /home/$USERNAME;
 echo "#Empty file, settings inherited from /usr/local/etc/zshrc" > .zshrc;
 chown $USERNAME:$USERNAME .zshrc;
 
-cd /usr/local/etc;
 #Download customized zshrc from grml and customize further
+cd /usr/local/etc;
 wget -O zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc;
 echo "screenFetch" >> zshrc;
 sed -i bak "s/alias ll='command ls -l/alias ll='command ls -lahF/" zshrc;
@@ -218,29 +191,22 @@ echo -e "***********************************************************************
 echo ""
 echo ""
 
-# function, that displays progress bar
+# Start Countdown
 progress_bar() {
   progress=$(( $1 * 30 / 20 ))
   bar=`printf "\33[41m% ${progress}s\33[m" ""`
   printf "\33[37D[%- 38s] %- 4s" "${bar}" "$1"
 }
-
-# percent counter
-i=0
-
-# inscription with shifting the cursor to the right in full length of the progress bar
+i=20
 printf "Rebooting in 20 seconds: \33[37C"
-
-# cycles percent
-while [ $i -le 20 ];
+while [ $i -ge 0 ];
 do
   progress_bar $i
-  i=$(( $i + 1 ))
+  i=$(( $i - 1 ))
   sleep 1
 done
-
-# because the "progress_bar" doesn't re-position cursor to a new line, after progress output we have to do this on our own.
 echo
+# End Countdown
 
 # reboot machine
 reboot
