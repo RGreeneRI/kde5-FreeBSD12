@@ -100,7 +100,7 @@ echo
 
 # install package manager and install packages
 env ASSUME_ALWAYS_YES=yes pkg bootstrap;
-env ASSUME_ALWAYS_YES=yes pkg install wget nano sudo htop kde5 hal dbus xorg xterm bash zsh open-vm-tools xf86-video-vmware xf86-input-vmmouse sddm screenFetch;
+env ASSUME_ALWAYS_YES=yes pkg install wget nano sudo htop kde5 hal dbus xorg xterm bash zsh open-vm-tools xf86-video-vmware xf86-input-vmmouse sddm screenFetch chromium;
 
 clear;
 
