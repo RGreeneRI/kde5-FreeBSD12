@@ -10,7 +10,7 @@ A computer of VM with an internet connection.
 Instructions:
 Install FreeBSD, and during the install process create a regular user, if you want the user to be able to use sudo, add them to the wheel group.  Once installed and rebooted, run kde5_inst.sh as the root user.
 
-The script installs tools and drivers to accomodate it being installed as a VMware guest.  You will have to install the proper video drivers and disable/remove open-vm-tools if running it on a real computer.
+The script installs tools and drivers to accomodate it being installed as a VMware guest.  You will have to install the proper video drivers if running it on a real computer.  
 
 
 Thanks,
