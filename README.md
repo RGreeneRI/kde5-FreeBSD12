@@ -8,7 +8,11 @@ Prerequisites:
 A computer of VM with an internet connection.
 
 Instructions:
-Install FreeBSD, and during the install process create a regular user, if you want the user to be able to use sudo, add them to the wheel group.  Once installed and rebooted, run kde5_inst.sh as the root user.
+Install FreeBSD as usual, and during the install process create a regular user, if you want the user to be able to use sudo, add them to the wheel group.  Once installed and rebooted, run the following commands: 
+
+"fetch https://raw.githubusercontent.com/RGreeneRI/kde5-FreeBSD12/master/kde5_inst.sh" to download. 
+"chmod +x kde5_inst.sh" to make executable.
+"./kde5_inst.sh" to run the script.
 
 The script installs tools and drivers to accomodate it being installed as a VMware guest.  You will have to install the proper video drivers if running it on a real computer.  
 
