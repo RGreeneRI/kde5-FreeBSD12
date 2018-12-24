@@ -11,7 +11,7 @@ A computer of VM with an internet connection.
 
 Instructions:
 
-Install FreeBSD as usual, and during the install process create a regular user, if you want the user to be able to use sudo, add them to the wheel group.  Once installed and rebooted, run the following commands: 
+Install FreeBSD as usual, and during the install process create a regular user, if you want the user to be able to use sudo, add them to the wheel group.  Once installed and rebooted, login as root run the following commands: 
 
 "fetch https://raw.githubusercontent.com/RGreeneRI/kde5-FreeBSD12/master/kde5_inst.sh" to download. 
 
