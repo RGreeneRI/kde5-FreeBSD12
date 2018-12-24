@@ -37,13 +37,17 @@ echo ""
 read -r -p "Press ENTER to continue, or Control-C to abort..." key
 
 # set vmware sysrc entries to yes or no
-echo -e "${Blue}Are you installing this on a VMware virtual machine?"
-select yn in "Yes" "No"; do
+echo -e "${Blue}Are you installing this to a VMware virtual machine? Yes / No?"
+echo -e "${NC}"
+while true; do
+    read yn
     case $yn in
-        Yes ) VM="YES"; break;;
-        No ) VM="NO"; break;;
+        [Yy]* ) VM="YES"; break;;
+        [Nn]* ) VM="NO"; break;;
+        * ) echo "Please answer yes or no.";;
     esac
 done
+
 
 # fetch and install FreeBSD updates
 env PAGER=cat freebsd-update fetch;
