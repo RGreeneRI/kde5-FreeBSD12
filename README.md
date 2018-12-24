@@ -1,8 +1,8 @@
-# kde5-FreeBSD11
-A script to automate the installation of a desktop environment on FreeBSD-11 with a few select tweaks to make the shell pretty and easy to use.
+# kde5-FreeBSD12
+A script to automate the installation of a desktop environment on FreeBSD-12 with a few select tweaks to make the shell pretty and easy to use.
 
 
-This is intended to be used on a fresh install of FreeBSD 11.  Tested on 11.2
+This is intended to be used on a fresh install of FreeBSD 12.
 
 Prerequisites:
 A computer of VM with an internet connection.
