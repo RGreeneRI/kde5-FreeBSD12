@@ -6,14 +6,14 @@ This is intended to be used on a fresh install of FreeBSD 12.  Tested on 11.2 an
 
 Prerequisites:
 
-A computer of VM with an internet connection.
+A computer or VM with an internet connection and a clean install of FreeBSD.
 
 
 Instructions:
 
 Install FreeBSD as usual, and during the install process create a regular user, if you want the user to be able to use sudo, add them to the wheel group.  Once installed and rebooted, login as root run the following commands: 
 
-"fetch https://raw.githubusercontent.com/RGreeneRI/kde5-FreeBSD12/master/kde5_inst.sh" to download. 
+"fetch https://raw.githubusercontent.com/RGreeneRI/kde5-FreeBSD12/master/kde5_inst.sh --no-verify-peer" to download. 
 
 "chmod +x kde5_inst.sh" to make executable.
 
