@@ -63,7 +63,7 @@ echo -e "${Yellow}Setting rc.conf variables${NC}"
 sysrc hald_enable="YES";
 sysrc dbus_enable="YES";
 sysrc sddm_enable="YES";
-if [[ "$VM" == "Yes" ]]; then
+if [ "$VM" == "Yes" ]; then
 echo -e "${Yellow}Setting rc.conf open-vm-tools variables${NC}"
 sysrc vmware_guest_vmblock_enable="$VM";
 sysrc vmware_guest_vmhgfs_enable="$VM";
@@ -143,7 +143,7 @@ do
   sleep 1
     case $yn in
         [Yy]* ) break;;
-        [Nn]* ) exit;
+        [Nn]* ) exit;;
         * ) echo "Would you like to reboot now? Y or N.";;
     esac
 done
