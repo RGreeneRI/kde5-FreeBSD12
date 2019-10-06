@@ -26,10 +26,8 @@ echo -e "to make FreeBSD easy fun to use!${NC}"
 echo ""
 echo ""
 
-# prompt user to press enter or not
-#read -r -p "Press ENTER to continue, or Control-C to abort..." key
-echo -e "${Yellow}Would you like to proceed? Yes / No?"
-echo -e "${NC}"
+# prompt user to proceed or not
+echo -e "${Yellow}Would you like to proceed? Yes / No?${NC}"
 while true; do
     read yn
     case $yn in
@@ -40,8 +38,7 @@ while true; do
 done
 
 # set vmware sysrc entries to yes or no
-echo -e "${Yellow}Are you installing this to a VMware virtual machine? Yes / No?"
-echo -e "${NC}"
+echo -e "${Yellow}Are you installing this to a VMware virtual machine? Yes / No?${NC}"
 while true; do
     read yn
     case $yn in
@@ -52,8 +49,7 @@ while true; do
 done
 
 # prompt for username of regular user
-echo -e "${Yellow}Please type a username for a regular user.  If it doesn't exist, we'll create it"
-echo -e "${NC}"
+echo -e "${Yellow}Please type a username for a regular user.  If it doesn't exist, we'll create it${NC}"
 read -p 'Username: ' USERNAME
 
 # Check if user exists, if so, continue, if not force you to create
