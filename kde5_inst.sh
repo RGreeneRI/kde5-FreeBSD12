@@ -87,13 +87,15 @@ read -p 'Username: ' USERNAME
 USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
 while [ $USER_EXISTS -eq 1 ]
 do
-  echo "User: $USERNAME does not exist, Create User: $USERNAME below."
-  adduser
+  echo "User: $USERNAME does not exist, Creating User: $USERNAME."
+#  adduser
+  pw useradd -n $USERNAME -c "$USERNAME" -g $USERNAME -G wheel -s /bin/sh -m
   USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
 done
 
-# changer provided user's shell and set up empty .zshrc user file
+# change provided user's shell, add to wheel for sudo access,  and set up empty .zshrc user file
 chsh -s /usr/local/bin/zsh $USERNAME;
+pw usermod -n $USERNAME -G wheel;
 cd /home/$USERNAME;
 echo "#Empty file, settings inherited from /usr/local/etc/zshrc" > .zshrc;
 chown $USERNAME:$USERNAME .zshrc;
