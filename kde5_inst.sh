@@ -21,10 +21,8 @@ COOL='\033[1;41m'         # COOL
 
 clear;
 
-echo -e "${COOL}********************************************************************************"
-echo -e "******   This script will install KDE Plasma and a bunch of useful stuff  ******"
-echo -e "******   to make FreeBSD easy fun to use!                                      ******"
-echo -e "********************************************************************************${NC}"
+echo -e "${White}This script will install KDE Plasma and a bunch of useful stuff"
+echo -e "to make FreeBSD easy fun to use!${NC}"
 echo ""
 echo ""
 
@@ -125,11 +123,9 @@ chmod 440 sudoers;
 chmod 440 sudoers.old;
 
 echo ""
-echo -e "${COOL}********************************************************************************"
-echo -e "****** Installation Complete!                                             ******"
-echo -e "****** Machine will reboot in 20 seconds for the changes to take effect!  ******"
-echo -e "****** Press Ctrl-C to restart later.                                     ******"
-echo -e "********************************************************************************${NC}"
+echo -e "${White}Installation Complete! Machine will reboot in"
+echo -e "20 seconds for the changes to take effect!"
+echo -e "Press Ctrl-C to restart later.${NC}"
 echo ""
 echo ""
 
