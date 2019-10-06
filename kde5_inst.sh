@@ -88,9 +88,10 @@ USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
 while [ $USER_EXISTS -eq 1 ]
 do
   echo -e "${Yellow}User: $USERNAME does not exist, Creating User: $USERNAME.${NC}"
-#  adduser
   pw useradd -n $USERNAME -c "$USERNAME" -G wheel -s /bin/sh -m
-  USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
+  echo -e "${Yellow}Type password for User: $USERNAME.${NC}"
+  passwd $USERNAME
+USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
 done
 
 # change provided user's shell, add to wheel for sudo access,  and set up empty .zshrc user file
