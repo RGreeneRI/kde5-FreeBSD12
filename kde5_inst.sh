@@ -83,9 +83,17 @@ echo ""
 # prompt for username of regular user
 read -p 'Username: ' USERNAME
 
+# Check if user exists, if so, continue, if not force you to create
+USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
+while [ $USER_EXISTS -eq 1 ]
+do
+  echo "User: $USERNAME does not exist, Create User: $USERNAME below."
+  adduser
+  USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
+done
+
 # changer provided user's shell and set up empty .zshrc user file
 chsh -s /usr/local/bin/zsh $USERNAME;
-cd /var/empty;
 cd /home/$USERNAME;
 echo "#Empty file, settings inherited from /usr/local/etc/zshrc" > .zshrc;
 chown $USERNAME:$USERNAME .zshrc;
