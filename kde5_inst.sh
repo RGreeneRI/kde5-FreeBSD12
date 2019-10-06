@@ -89,7 +89,7 @@ while [ $USER_EXISTS -eq 1 ]
 do
   echo "User: $USERNAME does not exist, Creating User: $USERNAME."
 #  adduser
-  pw useradd -n $USERNAME -c "$USERNAME" -g $USERNAME -G wheel -s /bin/sh -m
+  pw useradd -n $USERNAME -c "$USERNAME" -G wheel -s /bin/sh -m
   USER_EXISTS=$(id -u $USERNAME > /dev/null 2>&1; echo $?)
 done
 
