@@ -53,7 +53,7 @@ freebsd-update install;
 echo -e "${Yellow}Setting up package manager and installing packages${NC}"
 env ASSUME_ALWAYS_YES=yes pkg bootstrap;
 env ASSUME_ALWAYS_YES=yes pkg install wget nano sudo htop kde5 hal dbus xorg xterm bash zsh xf86-video-vmware xf86-input-vmmouse sddm screenFetch octopkg chromium;
-if [ "$VM" == 'Yes' ] ; then
+if [ "$VM" = "Yes" ] ; then
 echo -e "${Yellow}Installing open-vm-tools package${NC}"
 env ASSUME_ALWAYS_YES=yes pkg install open-vm-tools;
 fi
@@ -63,7 +63,7 @@ echo -e "${Yellow}Setting rc.conf variables${NC}"
 sysrc hald_enable="YES";
 sysrc dbus_enable="YES";
 sysrc sddm_enable="YES";
-if [ "$VM" == 'Yes' ]; then
+if [ "$VM" = "Yes" ]; then
 echo -e "${Yellow}Setting rc.conf open-vm-tools variables${NC}"
 sysrc vmware_guest_vmblock_enable="$VM";
 sysrc vmware_guest_vmhgfs_enable="$VM";
