@@ -38,6 +38,8 @@ while true; do
 done
 
 # set vmware sysrc entries to yes or no
+echo ""
+echo ""
 echo -e "${Yellow}Are you installing this to a VMware virtual machine? Yes / No?${NC}"
 while true; do
     read yn
@@ -49,6 +51,8 @@ while true; do
 done
 
 # prompt for username of regular user
+echo ""
+echo ""
 echo -e "${Yellow}Please type a username for a regular user.  If it doesn't exist, we'll create it${NC}"
 read -p 'Username: ' USERNAME
 
