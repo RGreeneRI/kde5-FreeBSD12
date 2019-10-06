@@ -53,7 +53,8 @@ done
 # prompt for username of regular user
 echo ""
 echo ""
-echo -e "${Yellow}Please type a username for a regular user.  If it doesn't exist, we'll create it${NC}"
+echo -e "${Yellow}Please type a username for a regular user."
+echo -e "If it doesn't exist, we'll create it${NC}"
 read -p 'Username: ' USERNAME
 
 # Check if user exists, if so, continue, if not force you to create
