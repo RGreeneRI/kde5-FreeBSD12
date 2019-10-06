@@ -53,7 +53,7 @@ freebsd-update install;
 echo -e "${Yellow}Setting up package manager and installing packages${NC}"
 env ASSUME_ALWAYS_YES=yes pkg bootstrap;
 env ASSUME_ALWAYS_YES=yes pkg install wget nano sudo htop kde5 hal dbus xorg xterm bash zsh xf86-video-vmware xf86-input-vmmouse sddm screenFetch octopkg chromium;
-if [[ "$VM" == "Yes" ]]; then
+if [ "$VM" == "Yes" ]; then
 echo -e "${Yellow}Installing open-vm-tools package${NC}"
 env ASSUME_ALWAYS_YES=yes pkg install open-vm-tools;
 fi
@@ -120,6 +120,7 @@ mv sudoers.new sudoers;
 chmod 440 sudoers;
 chmod 440 sudoers.old;
 
+echo ""
 echo -e "${COOL}********************************************************************************"
 echo -e "****** Installation Complete!                                             ******"
 echo -e "****** Machine will reboot in 20 seconds for the changes to take effect!  ******"
@@ -141,11 +142,6 @@ do
   progress_bar $i
   i=$(( $i - 1 ))
   sleep 1
-    case $yn in
-        [Yy]* ) break;;
-        [Nn]* ) exit;;
-        * ) echo "Would you like to reboot now? Y or N.";;
-    esac
 done
 echo
 # End Countdown
